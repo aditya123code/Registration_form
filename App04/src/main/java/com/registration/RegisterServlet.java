@@ -1,5 +1,5 @@
 package com.registration;
-
+import java.util.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,29 +29,33 @@ public class RegisterServlet extends HttpServlet {
 		String pass = req.getParameter("password");
 		String roll = req.getParameter("rollno");
 		String email = req.getParameter("email");
+	
 		
-		out.println("<h3>Name :"+ fname+ "</h3>" );
-		out.println("<h3>password :"+ pass+ "</h3>" );
-		out.println("<h3>email :"+ email+ "</h3>" );
+//		out.println("<h3>Name :"+ fname+ "</h3>" );
+//		out.println("<h3>password :"+ pass+ "</h3>" );
+//		out.println("<h3>email :"+ email+ "</h3>" );
+		
 		
 		try {
+			  
+		     
+			 Connection con = DriverManager.getConnection("jdbc:Oracle:thin:@//localhost:1521/XEPDB1","hr","hr");
+			 System.out.println("connection Successful");
+			 Statement st = con.createStatement();
+			 String sql_query = String.format("insert into registration values('%s','%s','%s','%s','%s')",roll,pass,email,fname,lname);
+			 st.executeUpdate(sql_query);
+			 System.out.println("insertion successfull");
 			
-			String username="hr";
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/XEPDB1",username,"hr");
-			System.out.println("connection Successful");
-			 Statement statement = con.createStatement();
-			 String sql_query = "insert into registration (name,email,pass,Roll_no)  values('rajat', 'sharmarajat381@gmail.com',  'raj@rajat',   22013317587698)";
-			 statement.executeUpdate(sql_query);
-			 System.out.println("Insertion Successful");
+			 
 
 	}
 		 catch (Exception e) {
-				// TODO Auto-generated catch block
+				// TODO Auto-generated catch block 
 				e.printStackTrace();
 			}
 	
 	
-		
+		out.println("<h3>SUCESSFUL SUBMITTED</h3>" );
 		
 		
 	}
