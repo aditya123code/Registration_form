@@ -8,3 +8,8 @@ colors
 2nd day 
 hgiu.
 hvkuhgli
+
+
+let say some features i want to add that i am not sure (may be want to chnage in future)
+payment option 
+user profile change
