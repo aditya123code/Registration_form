@@ -1,0 +1,5 @@
+THis is chat application
+emoji 
+robut 
+typing option 
+colors
